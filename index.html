@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معهد مجدل عنجر الفني</title>
+    <!-- خط تجوال الحديث + أيقونات FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ملف الـ CSS الخارجي -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- مكتبة EmailJS لإرسال الإيميل مباشرة -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("AlKPHRnY6T4iEHe9r");
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- أزرار عائمة (واتساب + العودة للأعلى) -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/96170256395" class="float-btn whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <button id="scrollTopBtn" class="float-btn scroll-top-btn" title="العودة للأعلى">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- نافذة منسقة لرسالة النجاح -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>تم إرسال طلبك بنجاح!</h3>
+            <p>شكراً لتسجيلك معنا. سنقوم بمراجعة طلبك والتواصل معك في أقرب وقت ممكن لتأكيد التفاصيل.</p>
+            <button id="closeModalBtn" class="btn btn-primary" style="width: 100%;">حسناً</button>
+        </div>
+    </div>
+
+    <div class="top-bar">
+        <div class="top-bar-info">
+            <span><i class="fa-solid fa-clock"></i> أوقات الدوام: من الاثنين إلى الخميس (8:00 صباحاً – 1:00 ظهراً)</span>
+            <a href="https://maps.google.com/?cid=1039288293727173860" target="_blank">
+                <i class="fa-solid fa-location-dot"></i> مجدل عنجر، البقاع، لبنان
+            </a>
+        </div>
+        <div>
+            <a href="tel:+96170256395" class="contact-link phone-wrapper">
+                <i class="fa-solid fa-phone"></i>
+                <span class="phone-number">+961 70 256 395</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- شريط إعلاني متحرك -->
+    <div class="announcement-bar">
+        <marquee behavior="scroll" direction="right" scrollamount="5">
+            <i class="fa-solid fa-bullhorn"></i> يُعلن معهد مجدل عنجر الفني عن بدء التسجيل للعام الدراسي 2026-2027 اعتباراً من يوم الإثنين 21 أيلول 2026 ولغاية 15 تشرين الأول 2026. المقاعد محدودة!
+        </marquee>
+    </div>
+
+    <header>
+        <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
+            <div class="institute-logo" style="background: var(--primary-color); color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                <img src="image001.png" alt="image001.png" style="width: 45px; height: 45px; object-fit: contain;">
+                <i class="fa-solid fa-pen-ruler"></i>
+            </div>
+            <div class="logo" style="font-size: 1.25rem; font-weight: 700;">
+                معهد مجدل عنجر الفني
+            </div>
+        </div>
+        <nav>
+            <a href="#about">عن المعهد</a>
+            <a href="#specialties">التخصصات</a>
+            <a href="#degrees">الشهادات المهنية</a>
+            <a href="#requirements">المستندات</a>
+            <a href="#contact">التسجيل والتواصل</a>
+            <button id="themeToggle" class="theme-toggle-btn" title="تغيير النمط (ليلي/نهاري)">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h1>معهد مجدل عنجر الفني</h1>
+            <p>التميز التقني... والتعليم المهني المتقدم</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> تقديم طلب تسجيل</a>
+                <a href="#specialties" class="btn btn-secondary"><i class="fa-solid fa-book-open"></i> استكشف التخصصات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- إحصائيات المعهد -->
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>+10</h3>
+                <p>سنوات من الخبرة والتميز</p>
+            </div>
+            <div class="stat-item">
+                <h3>4</h3>
+                <p>مراحل تعليمية معتمدة</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>متابعة وتوجيه مهني</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- التخصصات حسب المراحل الرسمية -->
+        <section id="specialties">
+            <div class="section-header">
+                <h2 class="section-title">التخصصات المتاحة للعام الدراسي 2026-2027</h2>
+                <p class="section-subtitle">الاختصاصات المعتمدة في كافة المراحل المهنية والتقنية</p>
+            </div>
+            <div class="specialties-grid">
+                
+                <!-- مرحلة التكميلية المهنية -->
+                <div class="specialty-card" id="degree-bp">
+                    <div class="degree-badge" style="margin-bottom: 1rem; display: inline-block;">BP</div>
+                    <h3>مرحلة التكميلية المهنية</h3>
+                    <ul class="req-list" style="margin-top: 1rem;">
+                        <li><i class="fa-solid fa-check"></i> مساعد ممرض</li>
+                        <li><i class="fa-solid fa-check"></i> مستكتب مختزل</li>
+                        <li><i class="fa-solid fa-check"></i> مساعد محاسب</li>
+                    </ul>
+                    <div class="nursing-badges" style="margin-top: auto; padding-top: 1rem;">
+                        <span class="badge"> إفادة صف خامس، سادس، سابع أو ثامن مصدقة</span>
+                    </div>
+                </div>
+
+                <!-- مرحلة البكالوريا الفنية -->
+                <div class="specialty-card" id="degree-bt">
+                    <div class="degree-badge" style="margin-bottom: 1rem; display: inline-block;">BT</div>
+                    <h3>مرحلة البكالوريا الفنية</h3>
+                    <ul class="req-list" style="margin-top: 1rem;">
+                        <li><i class="fa-solid fa-check"></i> العناية التمريضية</li>
+                        <li><i class="fa-solid fa-check"></i> التربية الحضانية</li>
+                        <li><i class="fa-solid fa-check"></i> المحاسبة والمعلوماتية</li>
+                        <li><i class="fa-solid fa-check"></i> البيع والعلاقات التجارية</li>
+                        <li><i class="fa-solid fa-check"></i> البناء والأشغال العامة</li>
+                        <li><i class="fa-solid fa-check"></i> التصميم الداخلي (ديكور)</li>
+                        <li><i class="fa-solid fa-check"></i> الفنون الفندقية</li>
+                    </ul>
+                    <div class="nursing-badges" style="margin-top: auto; padding-top: 1rem;">
+                        <span class="badge"> نسخة مصدقة عن شهادة صف تاسع أو BP2</span>
+                    </div>
+                </div>
+
+                <!-- مرحلة الامتياز الفني -->
+                <div class="specialty-card" id="degree-ts">
+                    <div class="degree-badge" style="margin-bottom: 1rem; display: inline-block;">TS</div>
+                    <h3>مرحلة الامتياز الفني</h3>
+                    <ul class="req-list" style="margin-top: 1rem;">
+                        <li><i class="fa-solid fa-check"></i> العناية التمريضية</li>
+                        <li><i class="fa-solid fa-check"></i> التربية الحضانية والابتدائية</li>
+                        <li><i class="fa-solid fa-check"></i> المراجعة والخبرة في المحاسبة</li>
+                        <li><i class="fa-solid fa-check"></i> الإدارة والتسويق</li>
+                        <li><i class="fa-solid fa-check"></i> المساحة</li>
+                    </ul>
+                    <div class="nursing-badges" style="margin-top: auto; padding-top: 1rem;">
+                        <span class="badge">نسخة مصدقة عن شهادة الثانوي أو BT3</span>
+                    </div>
+                </div>
+
+                <!-- مرحلة الإجازة الفنية -->
+                <div class="specialty-card" id="degree-lt">
+                    <div class="degree-badge" style="margin-bottom: 1rem; display: inline-block;">LT</div>
+                    <h3>مرحلة الإجازة الفنية</h3>
+                    <ul class="req-list" style="margin-top: 1rem;">
+                        <li><i class="fa-solid fa-check"></i> العناية التمريضية</li>
+                        <li><i class="fa-solid fa-check"></i> العلوم التربوية</li>
+                        <li><i class="fa-solid fa-check"></i> إدارة الأعمال</li>
+                    </ul>
+                    <div class="nursing-badges" style="margin-top: auto; padding-top: 1rem;">
+                        <span class="badge">نسخة مصدقة عن شهادة TS2</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- المستندات والشروط -->
+        <section id="requirements" style="margin-top: 5rem;">
+            <div class="section-header">
+                <h2 class="section-title">المستندات المطلوبة وشروط التسجيل</h2>
+            </div>
+            <div class="admission-dual-container">
+                <div class="req-card-box">
+                    <h3><i class="fa-solid fa-file-lines"></i> المستندات الأساسية لكل مرحلة</h3>
+                    <ul class="req-list">
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>BP:</strong> إفادة انهاء صف الخامس أو السادس أو السابع أو الثامن + إخراج قيد / هوية + شهادة صحية + افادة حسن سلوك + 2 صور شمسية.</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>BT:</strong> إفادة انهاء صف التاسع أو BP2 + إخراج قيد / هوية + شهادة صحية + افادة حسن سلوك + 2 صور شمسية.</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>TS:</strong> نسخة مصدقة عن شهادة الثالث ثانوي أو BT3 + إخراج قيد / هوية + شهادة صحية + حسن سلوك + 2 صور شمسية.</li>
+                        <li><i class="fa-solid fa-check-circle"></i> <strong>LT:</strong> نسخة مصدقة عن شهادة TS2 + إخراج قيد / هوية + شهادة صحية + حسن سلوك + 2 صور شمسية 
+                </div>
+                <div class="req-card-box">
+                    <h3><i class="fa-solid fa-circle-exclamation"></i> شروط الاستثناءات وملاحظات هامة</h3>
+                    <ul class="req-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <strong>الطلاب القادمون من الأول الثانوي:</strong> الطالب الناجح في صف الأول ثانوي يستطيع التسجيل في (BT2) في كل الاختصاصات ما عدا التمريض.</li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <strong>الطلاب القادمون من الثاني الثانوي:</strong> الطالب الناجح في صف الثاني ثانوي يستطيع التسجيل في (BT3) في كل الاختصاصات ما عدا التمريض.</li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <strong>للطلاب السوريين:</strong> يوجب إحضار إقامة أو ورقة الأمم المتحدة صالحة.</li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <strong>الطلاب المنتقلون:</strong> الطالب المنتقل من مرحلة إلى مرحلة يعتبر طالب جديد وعليه إحضار كامل المستندات ودفع الرسوم.</li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i> <strong>الرسوم:</strong> دفع القسط شرط أساسي لكي يعتبر الطالب مسجلاً رسمياً.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- التسجيل والتواصل -->
+        <section id="contact" style="margin-top: 5rem;">
+            <div class="section-header">
+                <h2 class="section-title">التسجيل والتواصل</h2>
+                <p class="section-subtitle">قم بتعبئة النموذج أدناه للتسجيل الإلكتروني وسنقوم بالتواصل معك لتأكيد الطلب</p>
+            </div>
+            <div class="contact-map-wrapper">
+                <div class="contact-info">
+                    <h3>معلومات الاتصال</h3>
+                    <div class="info-list">
+                        <p>
+                            <a href="tel:+96170256395" class="contact-link phone-wrapper">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="phone-number">+961 70 256 395</span>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="mailto:institutemajdelanjar@gmail.com" class="contact-link">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>institutemajdelanjar@gmail.com</span>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://maps.google.com/?cid=1039288293727173860" target="_blank" class="contact-link">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>مجدل عنجر، البقاع، لبنان</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- استمارة التسجيل المربوطة بالبريد -->
+                <div class="registration-form-wrapper">
+                    <h3>استمارة التسجيل المباشر</h3>
+                    <form id="registration-form">
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label><i class="fa-solid fa-user"></i> الاسم الكامل</label>
+                                <input type="text" name="user_name" placeholder="أدخل اسمك الثلاثي" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-phone"></i> رقم الهاتف</label>
+                                <input type="tel" name="user_phone" placeholder="03 000 000" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-cake-candles"></i> العمر</label>
+                                <input type="number" name="user_age" min="12" max="60" placeholder="مثال: 17" required>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</label>
+                                <input type="email" name="user_email" placeholder="example@mail.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-book-bookmark"></i> الاختصاص المطلوب</label>
+                                <select name="specialty" required>
+                                    <option value="" disabled selected>اختر الاختصاص...</option>
+                                    <option value="مساعد ممرض">مساعد ممرض</option>
+                                    <option value="مستكتب مختزل">مستكتب مختزل</option>
+                                    <option value="مساعد محاسب">مساعد محاسب</option>
+                                    <option value="العناية التمريضية">العناية التمريضية</option>
+                                    <option value="التربية الحضانية">التربية الحضانية</option>
+                                    <option value="المحاسبة والمعلوماتية">المحاسبة والمعلوماتية</option>
+                                    <option value="البيع والعلاقات التجارية">البيع والعلاقات التجارية</option>
+                                    <option value="البناء والأشغال العامة">البناء والأشغال العامة</option>
+                                    <option value="التصميم الداخلي (ديكور)">التصميم الداخلي (ديكور)</option>
+                                    <option value="الفنون الفندقية">الفنون الفندقية</option>
+                                    <option value="التربية الحضانية والابتدائية">التربية الحضانية والابتدائية</option>
+                                    <option value="المراجعة والخبرة في المحاسبة">المراجعة والخبرة في المحاسبة</option>
+                                    <option value="الإدارة والتسويق">الإدارة والتسويق</option>
+                                    <option value="المساحة">المساحة</option>
+                                    <option value="العلوم التربوية">العلوم التربوية</option>
+                                    <option value="إدارة الأعمال">إدارة الأعمال</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-layer-group"></i> المرحلة الدراسية</label>
+                                <select name="grade_level" required>
+                                    <option value="" disabled selected>اختر المرحلة...</option>
+                                    <option value="مرحلة التكميلية المهنية (BP)">مرحلة التكميلية المهنية (BP)</option>
+                                    <option value="مرحلة البكالوريا الفنية (BT)">مرحلة البكالوريا الفنية (BT)</option>
+                                    <option value="مرحلة الامتياز الفني (TS)">مرحلة الامتياز الفني (TS)</option>
+                                    <option value="مرحلة الإجازة الفنية (LT)">مرحلة الإجازة الفنية (LT)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                            <i class="fa-solid fa-paper-plane"></i> إرسال طلب التسجيل
+                        </button>
+                    </form>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.497555848777!2d35.922111!3d33.722056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f2d62ac90a9db%3A0xe66c4b325ed47ce4!2sMajdal%20Anjar%20Technical%20Institute!5e0!3m2!1sen!2slb!4v1700000000000" style="width:100%; height:100%; border:0;" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div>
+            جميع الحقوق محفوظة &copy; 2026 - معهد مجدل عنجر الفني
+        </div>
+    </footer>
+
+    <!-- سكربت التشغيل -->
+    <script>
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الإرسال...';
+            btn.disabled = true;
+
+            emailjs.sendForm('service_wr21sbp', 'template_jae0l3h', this)
+                .then(function() {
+                    document.getElementById('successModal').classList.add('active');
+                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> إرسال طلب التسجيل';
+                    btn.disabled = false;
+                    document.getElementById('registration-form').reset();
+                }, function(error) {
+                    alert('حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً: ' + JSON.stringify(error));
+                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> إرسال طلب التسجيل';
+                    btn.disabled = false;
+                });
+        });
+
+        document.getElementById('closeModalBtn').addEventListener('click', function() {
+            document.getElementById('successModal').classList.remove('active');
+        });
+
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+    </script>
+</body>
+</html>
